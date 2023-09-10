@@ -437,8 +437,8 @@ svg {
   background-image: url('/img/portadas/jpg/portada-1.jpg');
 }
 .cualidades img {
-  width: 100%;
-  max-width: 200px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   margin: 0 auto;
   background: var(--white);
