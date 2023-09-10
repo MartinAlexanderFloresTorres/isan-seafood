@@ -19,7 +19,7 @@ const Banner = () => {
           <div>
             <h2>Nuestra compañía</h2>
             <p>
-              Asan Seafood es una empresa especialista en producción y exportación de productos del
+              Isan Seafood es una empresa especialista en producción y exportación de productos del
               mar congelados que cumple íntegramente con todos los lineamientos marcados para
               proteger nuestro medio ambiente. Nuestros productos son de la más alta calidad y son
               procesados con la más alta tecnología para garantizar la satisfacción de nuestros
