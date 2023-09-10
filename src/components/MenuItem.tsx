@@ -28,10 +28,10 @@ const MenuItem = ({ category, products, toggle }: Props) => {
 
       {active && (
         <ul className='menu__subItem'>
-          {products.map(({ id, name, presentation }) => (
+          {products.map(({ id, name }) => (
             <li key={id}>
               <a href={`/products#${category.id}-producto-${id}`} onClick={toggle}>
-                {name} - {presentation}
+                {name}
               </a>
             </li>
           ))}
