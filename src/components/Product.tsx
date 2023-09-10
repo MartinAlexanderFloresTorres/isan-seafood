@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom'
+
 interface Props {
   id: number
   name: string
@@ -7,9 +9,14 @@ interface Props {
 }
 
 const Product = ({ id, categoryId, name, presentation, image }: Props) => {
+  const { hash } = useLocation()
+
   return (
-    <article className='producto' id={`${categoryId}-producto-${id}`}>
-      <img src={image} alt={name} />
+    <article
+      className={`producto ${hash === `#${categoryId}-producto-${id}` ? 'active' : ''}`}
+      id={`${categoryId}-producto-${id}`}
+    >
+      <img loading='lazy' src={image} alt={name} />
       <h2>{name}</h2>
       <p>{presentation}</p>
     </article>

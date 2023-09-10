@@ -29,7 +29,7 @@ const Menu = ({ active, toggle }: Props) => {
       </Link>
 
       <Link className='menu__link' to={`/products`} onClick={toggle}>
-        products
+        productos
       </Link>
 
       {categories.map(({ category, products }) => (

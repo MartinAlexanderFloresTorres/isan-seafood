@@ -16,6 +16,7 @@
 /*=============== base ===============*/
 html {
   scroll-behavior: smooth;
+  min-height: 100vh;
 }
 body {
   background: var(--light-gray);
@@ -237,12 +238,15 @@ svg {
 }
 .banner__imagen {
   background: rgba(0, 0, 0, 0.1);
-  background-image: url('/portada-2.jpg');
+  background-image: url('/img/portadas/webp/portada-2.webp');
   background-attachment: fixed;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.no-webp .banner__imagen {
+  background-image: url('/img/portadas/jpg/portada-2.jpg');
 }
 .banner__top {
   width: 100%;
@@ -253,6 +257,7 @@ svg {
   justify-content: center;
   align-items: center;
   text-align: center;
+  animation: fadeIn 0.5s ease;
 }
 .banner__top h1 {
   font-size: 60px;
@@ -270,6 +275,7 @@ svg {
 .banner__info {
   padding: 20px;
   background: var(--white);
+  animation: fadeIn 0.5s ease;
 }
 .banner__info .container {
   display: flex;
@@ -395,10 +401,10 @@ svg {
   padding: 40px 20px;
   background: var(--white);
 }
-.productos-preview .container-2 {
+.productos-preview .container-2 div {
   margin-bottom: 50px;
 }
-.productos-preview .container h2 {
+.productos-preview h2 {
   text-align: center;
   font-size: 40px;
   font-weight: 600;
@@ -406,26 +412,29 @@ svg {
   margin-bottom: 14px;
 }
 
-.productos-preview .container p {
+.productos-preview p {
   font-size: 18px;
   font-weight: 400;
   color: var(--primary);
   margin-bottom: 20px;
 }
 
-.productos-preview .container img {
+.productos-preview img {
   width: 100%;
 }
 /*=============== cualidades ===============*/
 .cualidades {
   background: rgba(0, 0, 0, 0.3);
-  background-image: url('/portada-1.jpg');
+  background-image: url('/img/portadas/webp/portada-1.webp');
   background-attachment: fixed;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   padding: 30px 20px;
+}
+.no-webp .cualidades {
+  background-image: url('/img/portadas/jpg/portada-1.jpg');
 }
 .cualidades img {
   width: 100%;
@@ -529,7 +538,7 @@ svg {
   width: 100%;
   min-height: 500px;
   background: rgba(0, 0, 0, 0.2);
-  background-image: url('/img/galeria/foto-10.jpg');
+  background-image: url('/img/portadas/webp/portada-3.webp');
   background-attachment: fixed;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
@@ -541,6 +550,9 @@ svg {
   justify-content: center;
   align-items: center;
 }
+.no-webp .banner__about {
+  background-image: url('/img/portadas/jpg/portada-3.jpg');
+}
 .banner__about h2 {
   font-size: 60px;
   font-weight: 600;
@@ -548,6 +560,7 @@ svg {
   margin-bottom: 20px;
   text-align: center;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.5s ease;
 }
 /*=============== servicios ===============*/
 .servicios {
@@ -651,6 +664,15 @@ svg {
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
 }
+@media (max-width: 780px) {
+  .proteccion {
+    background-image: none;
+    display: block;
+  }
+  .proteccion div {
+    background-attachment: fixed;
+  }
+}
 .proteccion div {
   min-height: 500px;
   display: flex;
@@ -680,7 +702,7 @@ svg {
   width: 100%;
   min-height: 500px;
   background: rgba(0, 0, 0, 0.2);
-  background-image: url('/img/galeria/foto-11.jpg');
+  background-image: url('/img/portadas/webp/portada-4.webp');
   background-attachment: fixed;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
@@ -692,6 +714,9 @@ svg {
   justify-content: center;
   align-items: center;
 }
+.no-webp .banner__productos {
+  background-image: url('/img/portadas/jpg/portada-4.jpg');
+}
 .banner__productos h2 {
   font-size: 60px;
   font-weight: 600;
@@ -699,6 +724,7 @@ svg {
   margin-bottom: 20px;
   text-align: center;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.5s ease;
 }
 /*=============== categorias__tags ===============*/
 .categorias__tags {
@@ -719,7 +745,8 @@ svg {
   color: var(--primary);
   transition: 0.3s ease all;
 }
-.categorias__tags a:hover {
+.categorias__tags a:hover,
+.categorias__tags a.active {
   background: var(--primary);
   color: var(--white);
 }
@@ -737,11 +764,24 @@ svg {
   padding-bottom: 30px;
 }
 .categorias__top h2 {
+  width: fit-content;
+  margin: 0 auto;
   text-align: center;
   font-size: 40px;
   font-weight: 600;
   color: var(--primary);
-  padding-bottom: 20px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.categorias__top h2.active::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  border-radius: 5px;
+  background: var(--primary);
 }
 .categorias__items {
   display: flex;
@@ -755,8 +795,10 @@ svg {
   color: var(--primary);
 }
 .productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   column-gap: 20px;
   row-gap: 20px;
   padding: 20px;
@@ -767,15 +809,22 @@ svg {
 .productos .producto {
   text-align: center;
   padding: 10px;
+  transition: 0.3s ease all;
+}
+.productos .producto.active,
+.productos .producto:hover {
+  background: var(--light-gray);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 .productos .producto h2 {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--primary);
   padding-bottom: 5px;
 }
 .productos .producto p {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--primary);
 }

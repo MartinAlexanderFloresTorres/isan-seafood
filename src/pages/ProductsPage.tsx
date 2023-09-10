@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import Cualidades from '../components/Cualidades'
 import Product from '../components/Product'
 import { categories } from '../data/categories'
@@ -5,6 +6,8 @@ import { categories } from '../data/categories'
 const isPar = (num: number) => num % 2 === 0
 
 const ProductsPage = () => {
+  const { hash } = useLocation()
+
   return (
     <>
       <div className='banner__productos'>
@@ -13,8 +16,12 @@ const ProductsPage = () => {
 
       <div className='categorias__tags'>
         {categories.map(({ category }) => (
-          <a href={`#${category.id}`} key={category.id}>
-            {category.name} - {category.id}
+          <a
+            href={`#${category.id}`}
+            key={category.id}
+            className={hash === `#${category.id}` ? 'active' : ''}
+          >
+            {category.name}
           </a>
         ))}
       </div>
@@ -28,9 +35,7 @@ const ProductsPage = () => {
             id={category.id.toString()}
           >
             <div className='categorias__top container'>
-              <h2>
-                {category.name} - {category.id}
-              </h2>
+              <h2 className={hash === `#${category.id}` ? 'active' : ''}>{category.name}</h2>
               <div className='categorias__items'>
                 <p>
                   <b>Nombre científico: </b>

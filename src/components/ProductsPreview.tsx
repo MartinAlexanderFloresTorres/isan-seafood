@@ -1,8 +1,8 @@
 const ProductsPreview = () => {
   return (
     <div className='productos-preview'>
-      <div className='container'>
-        <div className='container-2'>
+      <div className='container-2'>
+        <div>
           <h2>Nuestros productos</h2>
 
           <p>
