@@ -12,22 +12,32 @@ const Header = () => {
     setMenu(!menu)
   }
 
+  const cerrarMenu = () => setMenu(false)
+
   return (
     <header className='header'>
       <div className='container'>
-        <Link className='logo' to='/'>
+        <Link className='logo' to='/' onClick={cerrarMenu}>
           <img className='logo__img' src='/logo.png' alt='Isan Seafood' />
         </Link>
 
         <div className='header__right'>
           <nav className='header__navegacion'>
-            <Link to='/' className={pathname === '/' ? 'active' : ''}>
+            <Link to='/' className={pathname === '/' ? 'active' : ''} onClick={cerrarMenu}>
               Inicio
             </Link>
-            <Link to='/about' className={pathname === '/about' ? 'active' : ''}>
+            <Link
+              to='/about'
+              className={pathname === '/about' ? 'active' : ''}
+              onClick={cerrarMenu}
+            >
               Acerca De
             </Link>
-            <Link to='/products' className={pathname === '/products' ? 'active' : ''}>
+            <Link
+              to='/products'
+              className={pathname === '/products' ? 'active' : ''}
+              onClick={cerrarMenu}
+            >
               Productos
             </Link>
           </nav>
